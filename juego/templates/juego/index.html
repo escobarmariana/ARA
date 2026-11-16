@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ARA ADVENTURE GO</title>
+  <link rel="stylesheet" href="{% static 'juego/estilos.css' %}">
+</head>
+<body>
+  <div id="caja">
+    <div id="hud">
+      <span>Productos: <b id="productos">0</b></span>
+      <span>M = Música: <b id="musicaEstado">sí</b></span>
+      <span>P = Pausa</span>
+    </div>
+
+    <canvas id="c" width="800" height="500"></canvas>
+
+    <div id="menu">
+      <h1 id="titulo">ARA ADVENTURE GO</h1>
+      <p id="texto">Flechas o A/D para moverte, Espacio o ↑ para volar y saltar (doble salto). Salta sobre los enemigos para derrotarlos, recoge los productos y llega a la bandera.</p>
+      <button id="btnJugar">Jugar</button>
+      <button id="btnReanudar" class="oculto">Reanudar</button>
+      <button id="btnMenu" class="oculto">Menú principal</button>
+      <div id="extras">
+        <input id="nombre" placeholder="Tu nombre" maxlength="30" autocomplete="off">
+        <h3>Mejores puntuaciones</h3>
+        <ol id="ranking"></ol>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Datos que Django le entrega al JavaScript
+    window.STATIC_URL = "{% static 'juego/' %}";
+    const URL_GUARDAR = "{% url 'guardar' %}";
+    const URL_RANKING = "{% url 'ranking' %}";
+    const CSRF_TOKEN = "{{ csrf_token }}";
+  </script>
+  <script src="{% static 'juego/musica.js' %}"></script>
+  <script src="{% static 'juego/juego.js' %}"></script>
+</body>
+</html>

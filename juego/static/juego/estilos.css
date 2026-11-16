@@ -1,0 +1,51 @@
+:root {
+  --bg: #f4f1ea;
+  --fg: #222;
+  --btn: #e63946;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #15171c; --fg: #eee; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, sans-serif;
+  text-align: center;
+}
+
+#caja { position: relative; max-width: 800px; margin: 12px auto; }
+
+canvas { width: 100%; display: block; border-radius: 8px; background: #87ceeb; }
+
+#hud { display: flex; justify-content: space-between; padding: 4px 8px; font-weight: bold; }
+
+#menu {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, .6);
+  border-radius: 8px;
+  color: #fff;
+}
+#menu h1 { margin: 0 0 6px; font-size: 2.2rem; }
+#menu p { margin: 0; max-width: 80%; font-size: .95rem; }
+
+button {
+  background: var(--btn); color: #fff;
+  border: 0; border-radius: 8px;
+  padding: 10px 26px; font-size: 1.05rem; cursor: pointer;
+}
+
+.oculto { display: none !important; }
+
+/* Nombre del jugador y ranking (se muestran en el menú inicial y al terminar) */
+#extras { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+#extras input {
+  padding: 8px 12px; font-size: 1rem; border-radius: 8px; border: 0;
+  text-align: center; width: 190px;
+}
+#extras h3 { margin: 6px 0 0; font-size: .95rem; }
+#ranking { margin: 0; padding: 0; list-style-position: inside; font-size: .85rem; }
+#ranking:empty::before { content: "Aún no hay puntuaciones"; opacity: .7; }
